@@ -1,14 +1,17 @@
 package com.example.bookmyshowapplication.Entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
 @Data
 @NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class UserEntity {
 
     @Id
@@ -27,6 +30,9 @@ public class UserEntity {
     private String mobNo;
 
     private String address;
+
+    @OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL)
+    private List<TicketEntity> bookedTickets = new ArrayList<>();
 
 
 }

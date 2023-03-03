@@ -5,6 +5,9 @@ import com.example.bookmyshowapplication.Enums.Language;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "movies")
 @Data
@@ -24,6 +27,10 @@ public class MovieEntity {
     private Language language;
 
     private Genre genre;
+
+    @OneToMany(mappedBy = "movieEntity", cascade = CascadeType.ALL)
+    private List<ShowEntity> showEntityList = new ArrayList<>();
+
 
 
 
